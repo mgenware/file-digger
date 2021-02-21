@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { promises as fsPromises } from 'fs';
 import * as nodepath from 'path';
@@ -15,12 +16,14 @@ if (args.length !== 4) {
 
 const sourceDir = nodepath.resolve(args[0]!);
 const glob = normalizePath(nodepath.join(sourceDir, args[1]!));
-// eslint-disable-next-line no-console
-console.log(`Searching with glob: ${glob}`);
-const files = await fg(glob, { absolute: true });
 const types = new Set<string>(args[2]!.split(','));
 const destDir = args[3]!;
 
+console.log(`Searching with glob: ${glob}\nTypes: ${[...types]}`);
+const files = await fg(glob, { absolute: true });
+console.log(`${files.length} file(s) found by glob`);
+
+let extracted = 0;
 await Promise.all(
   files.map(async (file) => {
     const type = await fileType.fromFile(file);
@@ -28,13 +31,10 @@ await Promise.all(
       return;
     }
     const { ext } = type;
+    console.log(`Detected type "${ext}": ${file}`);
     if (!types.has(ext)) {
       return;
     }
-
-    // eslint-disable-next-line no-console
-    console.log(`Found type "${ext}": ${file}`);
-
     const actualExt = nodepath.extname(file);
     const appendExt = actualExt !== `.${ext}`;
 
@@ -43,5 +43,8 @@ await Promise.all(
 
     await fsPromises.mkdir(nodepath.dirname(destPath), { recursive: true });
     await fsPromises.copyFile(file, destPath + (appendExt ? `.auto.${ext}` : ''));
+    extracted++;
   }),
 );
+
+console.log(`${extracted} file(s) extracted`);
