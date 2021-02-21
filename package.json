@@ -12,6 +12,9 @@
     "type": "git",
     "url": "https://github.com/mgenware/file-digger"
   },
+  "bin": {
+    "file-digger": "./dist/main.js"
+  },
   "license": "MIT",
   "scripts": {
     "r": "daizong",
