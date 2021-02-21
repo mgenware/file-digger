@@ -1,0 +1,52 @@
+{
+  "name": "file-digger",
+  "version": "0.0.0",
+  "description": "Extract files by sniffing file types (not by file extensions)",
+  "type": "module",
+  "exports": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "author": "Mgenware (https://github.com/mgenware)",
+  "homepage": "https://github.com/mgenware/file-digger",
+  "bugs": "https://github.com/mgenware/file-digger/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mgenware/file-digger"
+  },
+  "license": "MIT",
+  "scripts": {
+    "r": "daizong",
+    "test": "daizong build"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.ts",
+    "dist/**/*.html",
+    "dist/**/*.css",
+    "dist/**/*.map"
+  ],
+  "devDependencies": {
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.31",
+    "@types/normalize-path": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "daizong": "^0.12.2",
+    "dir-tree-obj": "^0.0.1",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-typescript-lite": "^12.0.0",
+    "eslint-config-mgenware": "^0.0.5",
+    "eslint-plugin-import": "^2.22.1",
+    "mgenware-tsconfig-node": "^14.0.2",
+    "mocha": "^8.3.0",
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.1.5"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.5",
+    "file-type": "^16.2.0",
+    "normalize-path": "^3.0.0"
+  }
+}
