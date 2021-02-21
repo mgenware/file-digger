@@ -27,3 +27,12 @@ it('One type', async () => {
     dir: { '.': ['a.auto.png', 'a.png'] },
   });
 });
+
+it('Multiple types', async () => {
+  const dest = df(`${Date.now().toString()}`);
+  await t([sf(''), '**/*', 'heic,png', dest]);
+  assert.deepStrictEqual(await dirTreeObj(dest), {
+    '.': ['a.auto.png', 'a.png', 'heic.heic'],
+    dir: { '.': ['a.auto.png', 'a.png', 'heic.heic'] },
+  });
+});
