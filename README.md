@@ -23,6 +23,9 @@ Some examples:
 ```sh
 # Extract all png files.
 file-digger "./src" "**/*" "png" "./dest"
+
+# Extract all jpg, heic files.
+file-digger "./src" "**/*" "png,heic" "./dest"
 ```
 
 ### Supported file types
