@@ -21,10 +21,11 @@ file-digger <source directory> <glob> <comma separated file types> <destination 
 Some examples:
 
 ```sh
-# Extract all png files.
+# Detect and extract all png files regardless of extensions.
 file-digger "./src" "**/*" "png" "./dest"
 
-# Extract all jpg, heic files.
+
+# Detect and extract all png and heic files regardless of extensions.
 file-digger "./src" "**/*" "png,heic" "./dest"
 ```
 
