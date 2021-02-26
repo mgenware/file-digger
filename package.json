@@ -1,6 +1,6 @@
 {
   "name": "file-digger",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Extract files by sniffing file types (not by file extensions)",
   "type": "module",
   "exports": "./dist/main.js",
